@@ -1,4 +1,5 @@
-import { init } from "./js/chistes-page";
+import {obtenerUsuarios} from './js/http-provider';
 
-// Llamada inicializar conjunto de funciones en chistes-page.js
-init();
+
+
+obtenerUsuarios().then(console.log);

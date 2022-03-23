@@ -1,24 +1,18 @@
 // Peticion http a un hosting (fetch)
-const jokeUrl = 'https://api.chucknorris.io/jokes/random';
+const urlUsuarios = "https://reqres.in/api/users?page=2";
 
+const obtenerUsuarios = async () => {
+  try {
+    const resp = await fetch(urlUsuarios);
 
+    if (!resp.ok) throw "No se pudo realizar la petición";
 
-const obtenerChiste = async() => {
+    const { data } = await resp.json();
 
-    try {
-        const resp = await fetch(jokeUrl);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
 
-        if(!resp.ok) throw 'No se pudo realizar la petición';
-
-        const {icon_url, id, value} = await resp.json();
-
-        return {icon_url, id, value};
-
-    } catch (error) {
-        throw error;
-    }
-}
-
-export {
-    obtenerChiste
-}
+export { obtenerUsuarios };
